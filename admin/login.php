@@ -34,6 +34,7 @@ if(isset($_POST) & !empty($_POST)){
 					<div class="col-md-12">
 				<div class="row shop-login">
 				<div class="col-md-6 col-md-offset-3">
+				<?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
 					<div class="box-content">
 						
 						<div class="clearfix space40"></div>
