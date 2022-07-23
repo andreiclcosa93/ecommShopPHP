@@ -29,13 +29,14 @@ if(isset($_POST) & !empty($_POST)){
 				<div class="row">
 					<div class="page_header text-center">
 						<h2>Login</h2>
+						
 						<p>Admin Login</p>
 					</div>
 					<div class="col-md-12">
 				<div class="row shop-login">
-				<div class="col-md-6 col-md-offset-3">
-				<?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
+					<?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
 					<div class="box-content">
+						<div class="col-md-6 col-md-offset-3">
 						
 						<div class="clearfix space40"></div>
 						<form class="logregform" method="post">

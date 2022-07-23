@@ -7,7 +7,7 @@
     }
 
 	if(isset($_POST) & !empty($_POST)){
-		$name = mysqli_real_escape_string($connection, $_POST['cateforyname']);
+		$name = mysqli_real_escape_string($connection, $_POST['categoryname']);
 		$sql = "INSERT INTO category (name) VALUES ('$name')";
 		$res = mysqli_query($connection, $sql);
 		if($res){
