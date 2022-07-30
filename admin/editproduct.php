@@ -87,7 +87,7 @@
                         <?php if(isset($r['thumb']) & !empty($r['thumb'])) { ?>
                             <br>
                             <img src="<?php echo $r['thumb'] ?>" width="100px" height="100px" />
-                            <a href="delprodimg.php?id=<?php $r['id']; ?>" >Delete Image</a>
+                            <a href="delprodimg.php?id=<?php echo $r['id']; ?>" >Delete Image</a>
                         <?php } else { ?>
 
                         <input type="file" name="productimage" id="productimage">
