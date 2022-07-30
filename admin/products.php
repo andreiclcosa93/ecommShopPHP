@@ -45,6 +45,6 @@
 		</div>
 	</div>
 
-</section>
+</section> 
 	
     <?php include 'inc/footer.php'; ?>
