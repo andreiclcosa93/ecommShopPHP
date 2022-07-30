@@ -19,6 +19,36 @@
 		$price = mysqli_real_escape_string($connection, $_POST['productprice']);
 
 
+        if(isset($_FILES) & !empty($FILES)){
+			$name = $_FILES['productimage']['name'];
+			$size = $_FILES['productimage']['size'];
+			$type = $_FILES['productimage']['type'];
+			$tmp_name = $_FILES['productimage']['tmp_name'];
+
+			$max_size = 1000000;
+			$extension = substr($name, strpos($name, '.') +1);
+
+			if(isset($name) & !empty($name)){
+				if(($extension == 'jpg' || $extension == 'jpeg') && $type == 'image/jpeg' & $size<= $max_size){ 
+					$location = 'uploads/';
+                    $filepath = $location.$name;
+					if(move_uploaded_file($tmp_name, $filepath)){
+						echo "Uploaded Successfully!";
+					} else{
+						echo "Failed to Upload";
+					}
+				} else {
+					echo "Only JPG files are allowed";
+				}
+			} else {
+				echo "Please select a file";
+			}
+		}else {
+            $filepath = $_POST['filepath'];
+        }
+
+
+
 		$sql = "UPDATE products SET name='$prodname', description='$description', catid='$category', price='$price' WHERE id = $id";
 		$res = mysqli_query($connection, $sql);
 		if($res){
@@ -50,6 +80,7 @@
 
 				<form method="post" enctype="pultipart/form-data">
 					<div class="form-group">
+                        <input type="hidden" name="filepath" value="<?php echo $r['thumb']; ?>">
 						<label for="Productname">Product Name</label>
 						<input type="text" class="form-control" name="productname" id="Productname" placeholder="Product Name" value="<?php echo $r['name']; ?>">
 					</div>

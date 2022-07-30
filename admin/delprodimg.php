@@ -15,7 +15,7 @@
             if(unlink($r['thumb'])){
                 $delsql = "UPDATE products SET thumb='' WHERE id=$id";
                 if(mysqli_query($connection, $delsql)){
-                    header('location:editproduct.php?id={$id}');
+                    header("location:editproduct.php?id={$id}");
                 }
             }
         }
