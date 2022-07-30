@@ -31,7 +31,7 @@
 			if(isset($name) & !empty($name)){
 				if(($extension == 'jpg' || $extension == 'jpeg') && $type == 'image/jpeg' & $size<= $max_size){ 
 					$location = 'uploads/';
-                    $filepath = $location.$name;
+                    // $filepath = $location.$name;
 					if(move_uploaded_file($tmp_name, $filepath)){
 						echo "Uploaded Successfully!";
 					} else{
@@ -44,7 +44,7 @@
 				echo "Please select a file";
 			}
 		}else {
-            $filepath = $_POST['filepath'];
+            // $filepath = $_POST['filepath'];
         }
 
 
