@@ -6,21 +6,6 @@
         header('location: login.php');
     }
 
-	if(isset($_POST) & !empty($_POST)){
-		$name = mysqli_real_escape_string($connection, $_POST['productname']);
-		$description = mysqli_real_escape_string($connection, $_POST['productdescription']);
-		$category = mysqli_real_escape_string($connection, $_POST['productcategory']);
-		$price = mysqli_real_escape_string($connection, $_POST['productprice']);
-
-		$sql = "INSERT INTO products (name, description, catid, price) VALUES ('$name', '$description', '$category', '$price')";
-		$res = mysqli_query($connection, $sql);
-		if($res){
-			$smsg = "Product Created";
-		}else{
-			$fmsg = "Failed to Create Product";
-		}
-	}
-
 ?>
 
 <?php include 'inc/header.php'; ?>
@@ -46,15 +31,6 @@
 						<label for="productcategory">Product Category</label>
 							<select class="form-control" id="productcategory" name="productcategory">
 								<option value="">---SELECT CATEGORY---</option>
-								<?php
-
-									$sql = "SELECT * FROM category";
-									$res = mysqli_query($connection, $sql);
-									while ($r = mysqli_fetch_assoc($res)) {
-								
-								?>
-										<option value="<?php echo $r['id']; ?>"><?php echo $r['name']; ?></option>
-								<?php } ?>
 							</select>
 					</div>
 
