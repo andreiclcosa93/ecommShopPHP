@@ -65,8 +65,17 @@
 
 					<div class="form-group">
 						<label for="productimage">Product Image</label>
-						<input type="file" name="productimage" id="productimage">
+                        <?php if(isset($r['thumb']) & !empty($r['thumb'])) { ?>
+                            <br>
+                            <img src="<?php echo $r['thumb'] ?>" width="100px" height="100px" />
+                            <a href="delprodimg.php?id=<?php $r['id']; ?>" >Delete Image</a>
+                        <?php } else { ?>
+
+                        <input type="file" name="productimage" id="productimage">
 						<p class="help-block">Only jpg/png are allowed.</p>
+
+                        <?php } ?>
+
 					</div>
 
 					<button type="submit" class="btn btn-default">Submit</button>
