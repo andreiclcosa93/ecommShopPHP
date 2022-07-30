@@ -25,22 +25,31 @@
 				if(($extension == 'jpg' || $extension == 'jpeg') && $type == 'image/jpeg' & $size<= $max_size){ 
 					$location = 'uploads/';
 					if(move_uploaded_file($tmp_name, $location.$name)){
-						echo "Uploaded Successfully!";
+						// $smsg =  "Uploaded Successfully!";
+
+						$sql = "INSERT INTO products (name, description, catid, price) VALUES ('$name', '$description', '$category', '$price')";
+						$res = mysqli_query($connection, $sql);
+						if($res){
+								// $smsg = "Product Created";
+								header('location" product.php');
+						} else{
+							$fmsg = "Failed to Create Product";
+						}
 					} else{
-						echo "Failed to Upload";
+						$fmsg = "Failed to Upload Product";
 					}
 				} else {
-					echo "Only JPG files are allowed";
+					$fmsg =  "Only JPG files are allowed";
 				}
 			} else {
-				echo "Please select a file";
+				$fmsg =  "Please select a file";
 			}
 		} 
 
 		$sql = "INSERT INTO products (name, description, catid, price) VALUES ('$name', '$description', '$category', '$price')";
 		$res = mysqli_query($connection, $sql);
 		if($res){
-			$smsg = "Product Created";
+			header('location" product.php');
 		}else{
 			$fmsg = "Failed to Create Product";
 		}

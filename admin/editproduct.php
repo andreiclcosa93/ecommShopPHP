@@ -33,7 +33,14 @@
 					$location = 'uploads/';
                     // $filepath = $location.$name;
 					if(move_uploaded_file($tmp_name, $filepath)){
-						echo "Uploaded Successfully!";
+						// echo "Uploaded Successfully!";
+                            $sql = "UPDATE products SET name='$prodname', description='$description', catid='$category', price='$price' WHERE id = $id";
+                            $res = mysqli_query($connection, $sql);
+                                if($res){
+                                    $smsg = "Product Updated";
+                                }else{
+                                    $fmsg = "Failed to Updated Product";
+                            }
 					} else{
 						echo "Failed to Upload";
 					}
@@ -45,17 +52,16 @@
 			}
 		}else {
             // $filepath = $_POST['filepath'];
-        }
-
-
-
+       
 		$sql = "UPDATE products SET name='$prodname', description='$description', catid='$category', price='$price' WHERE id = $id";
 		$res = mysqli_query($connection, $sql);
-		if($res){
-			$smsg = "Product Created";
-		}else{
-			$fmsg = "Failed to Create Product";
-		}
+            if($res){
+                $smsg = "Product Updated";
+            }else{
+                $fmsg = "Failed to Updated Product";
+            }
+
+    }
 	}
 
 ?>

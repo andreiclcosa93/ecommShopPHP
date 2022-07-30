@@ -17,6 +17,19 @@
                 if(mysqli_query($connection, $delsql)){
                     header("location:editproduct.php?id={$id}");
                 }
+            }else {
+                $delsql = "UPDATE products SET thumb='' WHERE id=$id";
+                if(mysqli_query($connection, $delsql)){
+                    header("location:editproduct.php?id={$id}");
+                }
             }
+    }else {
+        $delsql = "UPDATE products SET thumb='' WHERE id=$id";
+        if(mysqli_query($connection, $delsql)){
+            header("location:editproduct.php?id={$id}");
         }
     }
+
+}else {
+    header("location:editproduct.php?id={$id}");
+}
