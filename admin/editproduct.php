@@ -12,6 +12,22 @@
         header('location: products.php');
     }
 
+    if(isset($_POST) & !empty($_POST)){
+		$prodname = mysqli_real_escape_string($connection, $_POST['productname']);
+		$description = mysqli_real_escape_string($connection, $_POST['productdescription']);
+		$category = mysqli_real_escape_string($connection, $_POST['productcategory']);
+		$price = mysqli_real_escape_string($connection, $_POST['productprice']);
+
+
+		$sql = "UPDATE products SET name='$prodname', description='$description', catid='$category', price='$price' WHERE id = $id";
+		$res = mysqli_query($connection, $sql);
+		if($res){
+			$smsg = "Product Created";
+		}else{
+			$fmsg = "Failed to Create Product";
+		}
+	}
+
 ?>
 
 <?php include 'inc/header.php'; ?>
@@ -22,6 +38,9 @@
 	<section id="content">
 		<div class="content-blog">
 			<div class="container">
+            <?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
+			<?php if(isset($smsg)){ ?><div class="alert alert-success" role="alert"> <?php echo $smsg; ?> </div><?php } ?>
+			
 
                 <?php 	
                     $sql = "SELECT * FROM products WHERE id=$id";

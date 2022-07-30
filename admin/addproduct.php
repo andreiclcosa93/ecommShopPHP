@@ -56,6 +56,9 @@
 	<section id="content">
 		<div class="content-blog">
 			<div class="container">
+			<?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
+			<?php if(isset($smsg)){ ?><div class="alert alert-success" role="alert"> <?php echo $smsg; ?> </div><?php } ?>
+			
 				<form method="post" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="Productname">Product Name</label>
