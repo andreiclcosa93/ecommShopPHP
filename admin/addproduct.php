@@ -12,6 +12,31 @@
 		$category = mysqli_real_escape_string($connection, $_POST['productcategory']);
 		$price = mysqli_real_escape_string($connection, $_POST['productprice']);
 
+		if(isset($_FILES) & !empty($FILES)){
+			$name = $_FILES['productimage']['name'];
+			$size = $_FILES['productimage']['size'];
+			$type = $_FILES['productimage']['type'];
+			$tmp_name = $_FILES['productimage']['tmp_name'];
+
+			$max_size = 1000000;
+			$extension = substr($name, strpos($name, '.') +1);
+
+			if(isset($name) & !empty($name)){
+				if(($extension == 'jpg' || $extension == 'jpeg') & type == 'image/jpeg' & $size<= $max_size){ 
+					$location = 'uploads/';
+					if(move_uploaded_file($tmp_name, $location.$name)){
+						echo "Uploaded Successfully!";
+					} else{
+						echo "Failed to Upload";
+					}
+				} else {
+					echo "Only JPG files are allowed";
+				}
+			} else {
+				echo "Please select a file";
+			}
+		} 
+
 		$sql = "INSERT INTO products (name, description, catid, price) VALUES ('$name', '$description', '$category', '$price')";
 		$res = mysqli_query($connection, $sql);
 		if($res){
@@ -31,7 +56,7 @@
 	<section id="content">
 		<div class="content-blog">
 			<div class="container">
-				<form method="post">
+				<form method="post" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="Productname">Product Name</label>
 						<input type="text" class="form-control" name="productname" id="Productname" placeholder="Product Name">
