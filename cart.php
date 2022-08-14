@@ -1,6 +1,12 @@
-<?php include 'inc/header.php'; ?>
+<?php 
 
-<?php include 'inc/nav.php'; ?>
+session_start();
+require_once 'config/connect.php';
+include 'inc/header.php'; 
+include 'inc/nav.php'; 
+
+$cart = $_SESSION['cart'];
+?>
 
 	<!-- SHOP CONTENT -->
 	<section id="content">
@@ -13,7 +19,7 @@
 					</div>
 					<div class="col-md-12">
 
-<table class="cart-table table table-bordered">
+			<table class="cart-table table table-bordered">
 				<thead>
 					<tr>
 						<th>&nbsp;</th>
@@ -25,6 +31,13 @@
 					</tr>
 				</thead>
 				<tbody>
+
+				<?php
+					foreach ($cart as $key => $value) {
+						echo $key . " : " . $value['quantity'] . "<br>";
+ 					
+				?>
+
 					<tr>
 						<td>
 							<a class="remove"><i class="fa fa-times"></i></a>
@@ -39,39 +52,20 @@
 							<span class="amount">£69.99</span>					
 						</td>
 						<td>
-							<div class="quantity">1</div>
+							<div class="quantity"><?php echo $value['quantity']; ?></div>
 						</td>
 						<td>
 							<span class="amount">£69.99</span>					
 						</td>
 					</tr>
-					<tr>
-						<td>
-							<a class="remove"><i class="fa fa-times"></i></a>
-						</td>
-						<td>
-							<a href="#"><img src="images/shop/2.jpg" alt="" height="90" width="90"></a>					
-						</td>
-						<td>
-							<a href="#">Comb Scissors</a>					
-						</td>
-						<td>
-							<span class="amount">£119.99</span>					
-						</td>
-						<td>
-							<div class="quantity">1</div>
-						</td>
-						<td>
-							<span class="amount">£119.99</span>					
-						</td>
-					</tr>
+					<?php } ?>
 					<tr>
 						<td colspan="6" class="actions">
 							<div class="col-md-6">
-								<div class="coupon">
+								<!-- <div class="coupon">
 									<label>Coupon:</label><br>
 									<input placeholder="Coupon code" type="text"> <button type="submit">Apply</button>
-								</div>
+								</div> -->
 							</div>
 							<div class="col-md-6">
 								<div class="cart-btn">
