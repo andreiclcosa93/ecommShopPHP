@@ -13,7 +13,7 @@ if(isset($_POST) & !empty($_POST)){
 		header("location: checkout.php");
 	}else{
 		// $fmsg = "Invalid Login Credentials";
-        header("location: login.php");
+        header("location: login.php?message=1");
 	}
 }
 

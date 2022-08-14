@@ -14,7 +14,7 @@ include 'inc/nav.php';
 				<div class="row">
 					<div class="page_header text-center">
 						<h2>Shop - Account</h2>
-						<p>Tagline Here</p>
+						
 					</div>
 					<div class="col-md-12">
 				<div class="row shop-login">
@@ -22,6 +22,13 @@ include 'inc/nav.php';
 					<div class="box-content">
 						<h3 class="heading text-center">I'm a Returning Customer</h3>
 						<div class="clearfix space40"></div>
+
+						<?php if(isset($_GET['message'])){
+								if($_GET['message'] == 1){
+						 ?><div class="alert alert-danger" role="alert"> <?php echo "Invalid Login Credentials"; ?> </div>
+
+						 <?php } }?>
+			
 						<form class="logregform" method="post" action="loginprocess.php">
 							<div class="row">
 								<div class="form-group">
@@ -61,6 +68,13 @@ include 'inc/nav.php';
 					<div class="box-content">
 						<h3 class="heading text-center">Register An Account</h3>
 						<div class="clearfix space40"></div>
+
+							<?php if(isset($_GET['message'])){
+									if($_GET['message'] == 2){
+							?><div class="alert alert-danger" role="alert"> <?php echo "Faile to Register user"; ?> </div>
+
+							<?php } }?>
+
 						<form class="logregform" method="post" action="registerprocess.php">
 							<div class="row">
 								<div class="form-group">
