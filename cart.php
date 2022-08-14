@@ -50,7 +50,7 @@ $cart = $_SESSION['cart'];
 							<a href="#"><img src="admin/<?php echo $cartr['thumb']; ?>" alt="" height="90" width="90"></a>					
 						</td>
 						<td>
-							<a href="single.php?id=<?php echo $cartr['id']; ?>"><?php echo substr($cartr['name'], 0 , 30); ?></a>					
+							<a href="single.php?id=<?php echo $cartr['id']; ?>"<?php echo substr($cartr['name'], 0 , 30); ?>></a>					
 						</td>
 						<td>
 							<span class="amount"><?php echo $cartr['price']; ?></span>					
