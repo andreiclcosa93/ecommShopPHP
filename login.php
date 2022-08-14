@@ -22,7 +22,7 @@ include 'inc/nav.php';
 					<div class="box-content">
 						<h3 class="heading text-center">I'm a Returning Customer</h3>
 						<div class="clearfix space40"></div>
-						<form class="logregform" method="post" action="">
+						<form class="logregform" method="post" action="loginprocess.php">
 							<div class="row">
 								<div class="form-group">
 									<div class="col-md-12">
@@ -61,7 +61,7 @@ include 'inc/nav.php';
 					<div class="box-content">
 						<h3 class="heading text-center">Register An Account</h3>
 						<div class="clearfix space40"></div>
-						<form class="logregform" method="post" action="">
+						<form class="logregform" method="post" action="registerprocess.php">
 							<div class="row">
 								<div class="form-group">
 									<div class="col-md-12">
