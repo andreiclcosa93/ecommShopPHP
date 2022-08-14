@@ -33,6 +33,7 @@ $cart = $_SESSION['cart'];
 				<tbody>
 
 				<?php
+				$total = 0;
 					foreach ($cart as $key => $value) {
 						// echo $key . " : " . $value['quantity'] . "<br>";
 						$cartsql = "SELECT * FROM products WHERE id=$key";
@@ -61,7 +62,12 @@ $cart = $_SESSION['cart'];
 							<span class="amount"><?php echo $cartr['price']*$value['quantity']; ?></span>					
 						</td>
 					</tr>
-					<?php } ?>
+					<?php 
+				
+					$total = $total + ($cartr['price']*$value['quantity']);
+					}
+					
+					?>
 					<tr>
 						<td colspan="6" class="actions">
 							<div class="col-md-6">
@@ -72,7 +78,7 @@ $cart = $_SESSION['cart'];
 							</div>
 							<div class="col-md-6">
 								<div class="cart-btn">
-									<button class="button btn-md" type="submit">Update Cart</button>
+									<!-- <button class="button btn-md" type="submit">Update Cart</button> -->
 									<button class="button btn-md" type="submit">Checkout</button>
 								</div>
 							</div>
@@ -88,7 +94,7 @@ $cart = $_SESSION['cart'];
 						<tbody>
 							<tr>
 								<th>Cart Subtotal</th>
-								<td><span class="amount">£190.00</span></td>
+								<td><span class="amount"><?php echo $total; ?>.00</span></td>
 							</tr>
 							<tr>
 								<th>Shipping and Handling</th>
@@ -98,7 +104,7 @@ $cart = $_SESSION['cart'];
 							</tr>
 							<tr>
 								<th>Order Total</th>
-								<td><strong><span class="amount">£190.00</span></strong> </td>
+								<td><strong><span class="amount"><?php echo $total; ?>.00</span></strong> </td>
 							</tr>
 						</tbody>
 					</table>
