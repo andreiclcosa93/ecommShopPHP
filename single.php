@@ -53,15 +53,16 @@ if(isset($_GET['id']) & !empty($_GET['id'])){
 							<div class="space10"></div>
 							<div class="p-price">INR<?php echo $prodr['price']; ?>.00/-</div>
 							<p><?php echo $prodr['description']; ?></p>
-							<div class="product-quantity">
-								<span>Quantity:</span> 
-								<form>
-									<input type="text" placeholder="1">
-								</form>
-							</div>
-							<div class="shop-btn-wrap">
-								<a href="#" class="button btn-small">Add to Cart</a>
-							</div>
+							<form method="get" action="addtocart.php">
+								<div class="product-quantity">
+									<span>Quantity:</span> 
+										<input type="hidden" name="id" value="<?php echo $prodr['id']; ?>">
+										<input type="text" name="quant" placeholder="1">
+								</div>
+								<div class="shop-btn-wrap">
+									<input type="submit" class="button btn-small" value="Add to Cart">
+								</div>
+							</form>
 							<div class="product-meta">
 								<span>Categories: 
 									<?php 
@@ -69,7 +70,7 @@ if(isset($_GET['id']) & !empty($_GET['id'])){
 										$prodcatres = mysqli_query($connection, $prodcatsql);
 										$prodcatr = mysqli_fetch_assoc($prodcatres);
 									?>
-									<a href="<?php echo $prodcatr['name']; ?>">bag</a></span><br>
+									<a href="#"><?php echo $prodcatr['name']; ?></a></span><br>
 							</div>
 						</div>
 					</div>
