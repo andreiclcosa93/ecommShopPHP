@@ -34,7 +34,10 @@ $cart = $_SESSION['cart'];
 
 				<?php
 					foreach ($cart as $key => $value) {
-						echo $key . " : " . $value['quantity'] . "<br>";
+						// echo $key . " : " . $value['quantity'] . "<br>";
+						$cartsql = "SELECT * FROM products WHERE id=$key";
+						$cartres = mysqli_query($connection,$cartsql);
+						$cartr = mysqli_fetch_assoc($cartres);
  					
 				?>
 
@@ -43,19 +46,19 @@ $cart = $_SESSION['cart'];
 							<a class="remove"><i class="fa fa-times"></i></a>
 						</td>
 						<td>
-							<a href="#"><img src="images/shop/1.jpg" alt="" height="90" width="90"></a>					
+							<a href="#"><img src="admin/<?php echo $cartr['thumb']; ?>" alt="" height="90" width="90"></a>					
 						</td>
 						<td>
-							<a href="#">Shaving Knives</a>					
+							<a href="single.php?id=<?php echo $cartr['id']; ?>"><?php echo substr($cartr['name'], 0 , 30); ?></a>					
 						</td>
 						<td>
-							<span class="amount">£69.99</span>					
+							<span class="amount"><?php echo $cartr['price']; ?></span>					
 						</td>
 						<td>
 							<div class="quantity"><?php echo $value['quantity']; ?></div>
 						</td>
 						<td>
-							<span class="amount">£69.99</span>					
+							<span class="amount"><?php echo $cartr['price']*$value['quantity']; ?></span>					
 						</td>
 					</tr>
 					<?php } ?>
