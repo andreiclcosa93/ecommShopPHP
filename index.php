@@ -1,12 +1,11 @@
 <?php
 
-	require_once 'config/connect.php';
+session_start();
+require_once 'config/connect.php';
+include 'inc/header.php'; 
+include 'inc/nav.php'; 
 
-	include 'inc/header.php'; 
-
-?>
-
-<?php include 'inc/nav.php'; ?>
+ ?>
 
 	<!-- SHOP CONTENT -->
 	<section id="content">
@@ -37,11 +36,11 @@
 								<div class="sm-item isotope-item">
 									<div class="product">
 										<div class="product-thumb">
-											<img src="admin/<?php echo $r=['thumb']; ?>" class="img-responsive" alt="">
+										<img src="admin/<?php echo $r['thumb']; ?>" class="img-responsive" width="250px" alt="">
 											<div class="product-overlay">
 												<span>
 												<a href="single.php?id=<?php echo $r['id']; ?>" class="fa fa-link"></a>
-												<a href="addtocart.php?id=<?php $r['id']; ?>" class="fa fa-shopping-cart"></a>
+												<a href="addtocart.php?id=<?php echo $r['id']; ?>" class="fa fa-shopping-cart"></a>
 												</span>					
 											</div>
 										</div>

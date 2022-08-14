@@ -37,7 +37,7 @@
 					</li>
 				</ul>
 				<div class="header-xtra">
-					<?php $cart = $_SESSION['cart']; ?>
+						<?php $cart = $_SESSION['cart']; ?>
 					<div class="s-cart">
 						<div class="sc-ico"><i class="fa fa-shopping-cart"></i><em><?php echo count($cart); ?></em></div>
 
@@ -64,7 +64,7 @@
 									<p><?php echo $value['quantity']; ?> <?php echo $navcartr['price']; ?></p>
 									<div class="ci-edit">
 										<!-- <a href="#" class="edit fa fa-edit"></a> -->
-										<a href="#" class="edit fa fa-trash"></a>
+										<a href="delcart.php?id=<?php echo $Key; ?>" class="edit fa fa-trash"></a>
 									</div>
 								</div>
 							</div>

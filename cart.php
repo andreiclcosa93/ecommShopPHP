@@ -44,7 +44,7 @@ $cart = $_SESSION['cart'];
 
 					<tr>
 						<td>
-							<a class="remove"><i class="fa fa-times"></i></a>
+							<a class="remove" href="delcart.php?id=<?php echo $Key; ?>"><i class="fa fa-times"></i></a>
 						</td>
 						<td>
 							<a href="#"><img src="admin/<?php echo $cartr['thumb']; ?>" alt="" height="90" width="90"></a>					

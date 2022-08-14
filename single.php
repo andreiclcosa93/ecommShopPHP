@@ -1,12 +1,13 @@
 <?php
 
+session_start();
 require_once 'config/connect.php';
 include 'inc/header.php'; 
 include 'inc/nav.php'; 
 
 if(isset($_GET['id']) & !empty($_GET['id'])){
 
-	$id = $_GET['$id'];
+	$id = $_GET['id'];
 	$prodsql = "SELECT * FROM products WHERE id=$id";
 	$prodres = mysqli_query($connection, $prodsql);
 	$prodr = mysqli_fetch_assoc($prodres);
