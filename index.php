@@ -41,7 +41,7 @@
 											<div class="product-overlay">
 												<span>
 												<a href="single.php?id=<?php echo $r['id']; ?>" class="fa fa-link"></a>
-												<a href="" class="fa fa-shopping-cart"></a>
+												<a href="addtocart.php?id=<?php $r['id']; ?>" class="fa fa-shopping-cart"></a>
 												</span>					
 											</div>
 										</div>
