@@ -13,7 +13,8 @@ if(isset($_POST) & !empty($_POST)){
     if($result){
 		//echo "User exits, create session";
 		$_SESSION['customer'] = $email;
-		$_SESSION['customerid'] = mysqli_insert_id($connection);
+		$_SESSION['customerid'] = $r['id'];
+		// $_SESSION['customerid'] = mysqli_insert_id($connection);
 		header("location: checkout.php");
 	}else{
 		//$fmsg = "Invalid Login Credentials";
