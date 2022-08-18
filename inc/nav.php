@@ -72,7 +72,7 @@
 							<div class="ci-total">Subtotal: <?php echo $total; ?>.00</div>
 							<div class="cart-btn">
 								<a href="cart.php">View Bag</a>
-								<a href="#">Checkout</a>
+								<a href="checkout.php">Checkout</a>
 							</div>
 						</div>
 					</div>

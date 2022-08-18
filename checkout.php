@@ -1,5 +1,5 @@
 <?php
-
+	ob_start();
 	session_start();
 	require_once 'config/connect.php'; 
 	if(!isset($_SESSION['customer']) & empty($_SESSION['customer'])){
@@ -10,6 +10,7 @@
 include 'inc/header.php'; 
 include 'inc/nav.php'; 
 $uid = $_SESSION['customerid'];
+$cart = $_SESSION['cart'];
 
 if(isset($_POST) & !empty($_POST)){
 
@@ -36,7 +37,42 @@ if(isset($_POST) & !empty($_POST)){
 
 			$ures = mysqli_query($connection, $usql);
 			if($ures){
-				echo "insert orders into orders table - ures";
+
+				$total = 0;
+					foreach ($cart as $key => $value) {
+						// echo $key . " : " . $value['quantity'] . "<br>";
+						$ordsql = "SELECT * FROM products WHERE id=$key";
+						$ordres = mysqli_query($connection, $ordres);
+						$ordr = mysqli_fetch_assoc($ordr);
+
+						$total = $total + ($ordr['price']*$value['quantity']);
+					}
+
+				$iosql = "INSERT INTO orders (uid, totalprice. orderstatus, paymentmode) VALUES ('$uid', '$total', '$payment')";
+					
+				$iores = mysqli_query($connection, $iosql) or die(mysqli_error($connection));
+				if($iores){
+					// echo "order inseted, insert order items";
+					$orderid = mysqli_insert_id($connection);
+					foreach ($cart as $key => $value) {
+						// echo $key . " : " . $value['quantity'] . "<br>";
+						$ordsql = "SELECT * FROM products WHERE id=$key";
+						$ordres = mysqli_query($connection, $ordsql);
+						$ordr = mysqli_fetch_assoc($ordres);
+
+						$pid = $ordr['id'];
+						$productprice = $ordr['price'];
+						$quantity = $value['quantity'];
+
+						$orditmsql = "INSERT INTO orderitems (pid, orderid, productprice, pquantity) VALUES ('$pid', '$orderid', '$productprice', '$quantity')";
+						$orditmres = mysqli_query($connection, $orditmsql)or die(mysqli_error($connection));
+						// if($orditmres){
+						// 	echo "order items inserted redirect to my account page";
+						// }
+					}
+				}
+				unset($_SESSION['cart']);
+				header("location: my-account.php");
 			}
 		} else {
 			//insert data in username table
@@ -44,7 +80,42 @@ if(isset($_POST) & !empty($_POST)){
 
 			$ires = mysqli_query($connection, $isql);
 			if($ires){
-				echo "insert orders into orders table - ires";
+
+				$total = 0;
+					foreach ($cart as $key => $value) {
+						// echo $key . " : " . $value['quantity'] . "<br>";
+						$ordsql = "SELECT * FROM products WHERE id=$key";
+						$ordres = mysqli_query($connection, $ordres);
+						$ordr = mysqli_fetch_assoc($ordr);
+
+						$total = $total + ($ordr['price']*$value['quantity']);
+					}
+
+				$iosql = "INSERT INTO orders (uid, totalprice. orderstatus, paymentmode) VALUES ('$uid', '$total', '$payment')";
+					
+				$iores = mysqli_query($connection, $iosql) or die(mysqli_error($connection));
+				if($iores){
+					// echo "order inseted, insert order items";
+					$orderid = mysqli_insert_id($connection);
+					foreach ($cart as $key => $value) {
+						// echo $key . " : " . $value['quantity'] . "<br>";
+						$ordsql = "SELECT * FROM products WHERE id=$key";
+						$ordres = mysqli_query($connection, $ordsql);
+						$ordr = mysqli_fetch_assoc($ordres);
+
+						$pid = $ordr['id'];
+						$productprice = $ordr['price'];
+						$quantity = $value['quantity'];
+
+						$orditmsql = "INSERT INTO orderitems (pid, orderid, productprice, pquantity) VALUES ('$pid', '$orderid', '$productprice', '$quantity')";
+						$orditmres = mysqli_query($connection, $orditmsql)or die(mysqli_error($connection));
+						// if($orditmres){
+						// 	echo "order items inserted redirect to my account page";
+						// }
+					}
+				}
+				unset($_SESSION['cart']);
+				header("location: my-account.php");
 			}
 		}
 
@@ -70,6 +141,7 @@ if(isset($_POST) & !empty($_POST)){
 				<div class="col-md-6 col-md-offset-3">
 					<div class="billing-details">
 						<h3 class="uppercase">Billing Details</h3>
+						<?php  ?>
 						<div class="space30"></div>
 					
 							<label class="">Country </label>
@@ -131,7 +203,7 @@ if(isset($_POST) & !empty($_POST)){
 							</div>
 							<div class="clearfix space20"></div>
 							<label>Phone </label>
-							<input class="form-control" name="phone" id="billing_phone" placeholder="" value="<?php if(!empty($R['phone'])){ echo $r['phone']; }elseif(isset($phone)) { echo $phone; } ?>" type="text">
+							<input class="form-control" name="phone" id="billing_phone" placeholder="" value="<?php if(!empty($R['phone'])){ echo $r['mobile']; }elseif(isset($phone)) { echo $phone; } ?>" type="text">
 					
 					</div>
 				</div>
