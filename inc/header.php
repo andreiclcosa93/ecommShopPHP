@@ -48,7 +48,20 @@
 	<!-- Modernizer -->
 	<script src="js/modernizr.custom.js"></script>
 
-</head>
+	</head>
 <body class="multi-page">
 
 <div id="wrapper" class="wrapper">
+	<!-- HEADER -->
+	<header id="header2">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 col-xs-5 logo">
+					<a href="http://localhost/ecomphp/index.php"><img src="http://[::1]/cishop/assets/images/logo.png" class="img-responsive" alt=""/></a>
+				</div>
+				<div class="col-md-9 col-xs-7">
+					<div class="top-bar">
+						
+					</div>
+				</div>
+			</div>

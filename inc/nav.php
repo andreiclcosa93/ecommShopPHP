@@ -7,7 +7,7 @@
 				<div id="mobnav-btn">Menu <i class="fa fa-bars"></i></div>
 				<ul class="sf-menu">
 					<li>
-						<a href="#">Home</a>
+						<a href="http://localhost/ecomphp/index.php">Home</a>
 					</li>
 					<li>
 						<a href="#">Shop</a>
@@ -28,8 +28,9 @@
 						<a href="#">My Account</a>
 						<div class="mobnav-subarrow"><i class="fa fa-plus"></i></div>
 						<ul>
-							<li><a href="#">My Orders</a></li>
-							<li><a href="#">Logout</a></li>
+							<li><a href="http://localhost/ecomphp/my-account.php">My Orders</a></li>
+							<li><a href="http://localhost/ecomphp/edit-address.php">Update Address</a></li>
+							<li><a href="http://localhost/ecomphp/logout.php">Logout</a></li>
 						</ul>
 					</li>
 					<li>
