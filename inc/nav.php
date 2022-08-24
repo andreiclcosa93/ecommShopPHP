@@ -37,6 +37,7 @@
 						<a href="#">Contact</a>
 					</li>
 				</ul>
+				<?php if(isset($_SESSION['cart'] )) {  ?>
 				<div class="header-xtra">
 						<?php $cart = $_SESSION['cart']; ?>
 					<div class="s-cart">
@@ -92,6 +93,7 @@
 						</div>
 					</div>
 				</div>
+				<?php } ?>
 			</div>
 		</div>
 	</header>

@@ -80,6 +80,7 @@ if(isset($_POST) & !empty($_POST)){
 									<input type="submit" class="button btn-small" value="Add to Cart">
 								</div>
 							</form>
+							<a href="addtowishlist.php?id=<?php echo['id']; ?>">Add to WishList</a>
 							<div class="product-meta">
 								<span>Categories: 
 									<?php 
